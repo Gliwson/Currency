@@ -3,7 +3,6 @@ package com.example.curency.domain;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -16,8 +15,10 @@ public class Board {
     @Column(name = "tables")
     private String table;
     private String no;
-    private LocalDate effectiveDate;
-    @OneToMany
+    private String effectiveDate;
+    @OneToMany(mappedBy = "board",
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE,
+                    CascadeType.DETACH, CascadeType.REFRESH})
     private List<Rates> rates;
 
 }

@@ -14,7 +14,9 @@ public class Rates {
     private String currency;
     private String code;
     private String mid;
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE,
+            CascadeType.DETACH, CascadeType.REFRESH})
+    @JoinColumn(name = "board_id")
     private Board board;
 
 }
