@@ -18,9 +18,8 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public void addToDatebase() {
-        String URL = "http://api.nbp.pl/api/exchangerates/tables/A?format=json";
-
+    public void addToDatebase(String table) {
+        String URL = "http://api.nbp.pl/api/exchangerates/tables/" + table + "?format=json";
         RestTemplate restTemplate = new RestTemplate();
         BoardDTO[] restTemplateForObject = restTemplate.getForObject(URL, BoardDTO[].class);
         BoardDTO boardDTO;
